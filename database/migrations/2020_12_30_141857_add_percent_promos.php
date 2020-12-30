@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnLogoOnTableMitras extends Migration
+class AddPercentPromos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddColumnLogoOnTableMitras extends Migration
      */
     public function up()
     {
-        Schema::table('mitras', function (Blueprint $table) {
-            $table->string('logo')->nullable()->after('password');
+        Schema::table('promos', function (Blueprint $table) {
+            $table->integer('percent')->after('id_ruang');
         });
     }
 
@@ -25,7 +25,7 @@ class AddColumnLogoOnTableMitras extends Migration
      */
     public function down()
     {
-        Schema::table('mitras', function (Blueprint $table) {
+        Schema::table('promos', function (Blueprint $table) {
             //
         });
     }

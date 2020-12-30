@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\adminmitra;
 
 use App\Http\Controllers\Controller;
+use App\Promo;
 use Illuminate\Http\Request;
 use App\RuangMeeting;
 use Auth;
@@ -98,6 +99,28 @@ class RuangMeetingController extends Controller
     public function show($id)
     {
         //
+    }
+
+    public function promo($id)
+    {
+        $percents = ['10', '20', '30', '40', '50', '60', '70', '80', '90'];
+        return view('pages.adminmitra.meeting.promo', [
+            'room' => RuangMeeting::findOrFail($id),
+            'percents' => $percents
+        ]);
+    }
+
+    public function promoSubmit(Request $request, $id)
+    {
+        $room = RuangMeeting::findOrFail($id);
+        dd($request->all());
+        Promo::create([
+            'id_ruang' => $room->id,
+            'percent' => $request->percent,
+            'harga_sewa' => $request->promo_price
+        ]);
+
+        return redirect()->route('ruangmeeting.index');
     }
 
     /**

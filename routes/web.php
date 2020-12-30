@@ -51,6 +51,8 @@ Route::group(['prefix' => 'adminmitra'], function () {
     Route::get('ruangmeeting/create', 'adminmitra\RuangMeetingController@create')->name('ruangmeeting.create');
     Route::post('ruangmeeting/store', 'adminmitra\RuangMeetingController@store')->name('ruangmeeting.store');
     Route::post('ruangmeeting/store', 'adminmitra\RuangMeetingController@store')->name('ruangmeeting.store');
+    Route::get('ruangmeeting/{id}/promo', 'adminmitra\RuangMeetingController@promo')->name('ruangmeeting.promo');
+    Route::post('ruangmeeting/{id}/promo', 'adminmitra\RuangMeetingController@promoSubmit');
     Route::get('ruangmeeting/edit/{id}', 'adminmitra\RuangMeetingController@edit')->name('ruangmeeting.edit');
     Route::patch('ruangmeeting/update/{id}', 'adminmitra\RuangMeetingController@update')->name('ruangmeeting.update');
     Route::get('ruangmeeting/destroy/{id}', 'adminmitra\RuangMeetingController@destroy')->name('ruangmeeting.destroy');
