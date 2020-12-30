@@ -44,7 +44,7 @@
                                     <td>{{$meeting->nama_tempat}}</td>
                                     <td>{{$meeting->kapasitas}}</td>
                                     <td>{{$meeting->harga_sewa}}</td>
-                                    <td><img src="{{ asset('uploads/ruangmeeting/'. $meeting->foto) }}" width="150" height="159" alt=""></td>
+                                    <td><img src="{{ asset($meeting->foto) }}" width="150" height="159" alt=""></td>
                                     <td>{{$meeting->keterangan}}</td>
                                     <td>
                                         @if($meeting->status == '1')
