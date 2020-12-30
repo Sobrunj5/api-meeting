@@ -95,9 +95,17 @@
                                                name="nama_pemilik" type="text" value="{{$user->nama_mitra}}" value="{{old('nama_pemilik')}}"/>
                                         @if ($errors->has('nama_pemilik'))
                                             <span class="invalid-feedback" role="alert">
-                                        <p><b>{{ $errors->first('nama_pemilik') }}</b></p>
-                                    </span>
+                                                <p><b>{{ $errors->first('nama_pemilik') }}</b></p>
+                                            </span>
                                         @endif
+                                    </div>
+
+                                    <div class="col-12 mt-2 form-group">
+                                        <label for="foto">Foto</label>
+                                        <input class="form-control-file" name="foto" type="file" id="foto"/>
+                                            @error('foto')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
                                     </div>
                                 </div>
 
@@ -108,6 +116,7 @@
                                     <a href="{{route('profil.index')}}" class="btn btn-default">Cancel</a>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>
