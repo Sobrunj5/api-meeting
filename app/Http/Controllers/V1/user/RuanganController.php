@@ -4,6 +4,7 @@ namespace App\Http\Controllers\V1\user;
 
 use App\Booking;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PromoResource;
 use App\Http\Resources\RuangMeetingResource;
 use App\Response;
 use App\RuangMeeting;
@@ -23,11 +24,7 @@ class RuanganController extends Controller
             }
         }
 
-        return Response::transform(
-            'success',
-            true, 
-            RuangMeetingResource::collection(collect($res)),
-            200);
+        return Response::transform('success', true, PromoResource::collection(collect($res)), 200);
     }
 
 
