@@ -41,7 +41,7 @@
                                 <label class="control-label col-md-3">Promo (%)</label>
                                 <div class="col-md-4">
                                     <select name="percent" id="select-percent" class="form-control">
-                                        <option value="" selected disabled>Pilih</option>
+                                        <option value="0" selected disabled>Pilih</option>
                                         @foreach ($percents as $perc)
                                             <option value="{{ $perc }}">{{ $perc }}</option>
                                         @endforeach
@@ -58,7 +58,7 @@
                                     <div class="input-icon right">
                                         <i class="fa"></i>
                                         <input class="form-control" id="promo_price"
-                                               name="promo_price" type="text" disabled/>
+                                               name="promo_price" type="text" readonly/>
                                     </div>
                                 </div>
                             </div>
@@ -87,8 +87,7 @@
         const perc = this.value
         const total = price * (perc/100)
         promoPrice.value = price - total
-        promoPrice.textContent = price - total
-        console.log(promoPrice.value);
+        //promoPrice.textContent = price - total
 
     })
 </script>

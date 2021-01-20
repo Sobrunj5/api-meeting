@@ -112,10 +112,12 @@ class RuangMeetingController extends Controller
 
     public function promoSubmit(Request $request, $id)
     {
+        if ($request->percent == null) {
+            return redirect()->back()->with('error', 'promo harus diisi');
+        }
         $room = RuangMeeting::findOrFail($id);
-        dd($request->all());
-        Promo::create([
-            'id_ruang' => $room->id,
+        $room->promo()->create([
+            //'id_ruang' => $room->id,
             'percent' => $request->percent,
             'harga_sewa' => $request->promo_price
         ]);

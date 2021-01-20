@@ -42,8 +42,8 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$meeting->nama_tempat}}</td>
                                 <td>{{$meeting->kapasitas}}</td>
-                                <td>{{$meeting->harga_sewa}}</td>
-                                <td><img src="{{ asset($meeting->foto) }}" width="150" height="159" alt=""></td>
+                                <td>{{$meeting->harga_sewa}} (promo : {{ $meeting->promo ? $meeting->promo->harga_sewa : '' }})</td>
+                                <td><img src="{{ $meeting->foto }}" width="150" height="159" alt=""></td>
                                 <td>{{$meeting->keterangan}}</td>
                                 <td>
                                     @if($meeting->status == '1')
@@ -59,8 +59,10 @@
                                     <a href="{{route('ruangmeeting.destroy', $meeting->id)}}"
                                         onclick="return confirm('Apakah Anda akan menghapus data ini?')" type="button"
                                         class="btn default btn-outline btn-circle m-b-10">Delete</a>
-                                    <a href="{{ route('ruangmeeting.promo', $meeting->id) }}" type="button"
+                                        @if (!$meeting->promo)
+                                            <a href="{{ route('ruangmeeting.promo', $meeting->id) }}" type="button"
                                         class="btn btn-info btn-outline btn-circle m-b-10">Add Promo</a>
+                                        @endif
                                 </td>
                             </tr>
                             @endforeach

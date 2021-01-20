@@ -15,10 +15,9 @@ class RuanganController extends Controller
 
     public function promo()
     {
-        $rooms = RuangMeeting::all();
+        $rooms = RuangMeeting::get();
         $res = [];
         foreach($rooms as $room) {
-
             if($room->promo){
                 array_push($res, $room);
             }
