@@ -46,4 +46,6 @@
     <link href="{{asset('assets/css/theme/dark/theme-color.css')}}" rel="stylesheet" type="text/css" />
     <!-- favicon -->
     <link rel="shortcut icon" href="http://radixtouch.in/templates/admin/smart/source/assets/img/favicon.ico" />
+
+    @yield('head')
 </head>

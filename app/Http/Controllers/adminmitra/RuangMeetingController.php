@@ -7,6 +7,7 @@ use App\Promo;
 use Illuminate\Http\Request;
 use App\RuangMeeting;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class RuangMeetingController extends Controller
@@ -112,6 +113,8 @@ class RuangMeetingController extends Controller
 
     public function promoSubmit(Request $request, $id)
     {
+        $startDate = Carbon::parse(substr($request->date_range, 0, 10))->format('Y-m-d');
+        $enDate = Carbon::parse(substr($request->date_range, 13))->format('Y-m-d');
         if ($request->percent == null) {
             return redirect()->back()->with('error', 'promo harus diisi');
         }
@@ -119,7 +122,9 @@ class RuangMeetingController extends Controller
         $room->promo()->create([
             //'id_ruang' => $room->id,
             'percent' => $request->percent,
-            'harga_sewa' => $request->promo_price
+            'harga_sewa' => $request->promo_price,
+            'start_date' => $startDate,
+            'end_date' => $enDate,
         ]);
 
         return redirect()->route('ruangmeeting.index');

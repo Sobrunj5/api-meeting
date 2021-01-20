@@ -1,4 +1,7 @@
 @extends('templates.adminmitra')
+@section('head')
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+@endsection
 @section('content')
     <div class="page-bar">
         <div class="page-title-breadcrumb">
@@ -62,6 +65,18 @@
                                     </div>
                                 </div>
                             </div>
+
+                             <div class="form-group row  margin-top-20">
+                                <label class="control-label col-md-3">Mulai Promo Sampai Selesai Promo</label>
+                                <div class="col-md-4">
+                                    <div class="input-icon right">
+                                        <i class="fa"></i>
+                                        <input class="form-control" id="date_range"
+                                               name="date_range" type="text" readonly 
+                                               style="cursor: pointer;"/>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <div class="offset-md-3 col-md-9">
@@ -76,6 +91,11 @@
     </div>
 @endsection
 @section('script')
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
 <script>
     const normalPrice = document.querySelector('#normal_price')    
     const percent = document.querySelector('#select-percent')
@@ -90,6 +110,17 @@
         //promoPrice.textContent = price - total
 
     })
+</script>
+
+<script>
+    $(function() {
+        $('#date_range').daterangepicker({
+            opens: 'left',
+            "minDate": new Date(),
+        }, function(start, end, label) {
+            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+        });
+    });
 </script>
 
 @endsection

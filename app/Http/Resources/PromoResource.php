@@ -15,15 +15,10 @@ class PromoResource extends JsonResource
     public function toArray($request)
     {
         return [
-            "id"            => $this->id,
-            "nama_tempat"   => $this->nama_tempat,
-            "kapasitas"     => $this->kapasitas,
-            "harga_sewa"    => $this->promo->harga_sewa,
-            "foto"          => $this->foto,
-            "keterangan"    => $this->keterangan,
-            "status"        => $this->status ? true : false,
-            //"promo"         => new PromoResource($this->promo)
-            //"mitra"      => new MitraResource($this->mitra),
+            "id" => $this->id,
+            "harga_promo" => $this->harga_sewa,
+            "start_date" => $this->start_date,
+            "end" => $this->end_date,
         ];
     }
 }
