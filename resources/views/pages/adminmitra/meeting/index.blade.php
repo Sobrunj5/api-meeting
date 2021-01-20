@@ -42,7 +42,7 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$meeting->nama_tempat}}</td>
                                 <td>{{$meeting->kapasitas}}</td>
-                                <td>{{$meeting->harga_sewa}} (promo : {{ $meeting->promo ? $meeting->promo->harga_sewa : '' }})</td>
+                                <td>{{'Rp. '.number_format($meeting->harga_sewa)}} <br> {{ $meeting->promo ?  ' promo(Rp. '. number_format($meeting->promo->harga_sewa).')' : '' }}</td>
                                 <td><img src="{{ $meeting->foto }}" width="150" height="159" alt=""></td>
                                 <td>{{$meeting->keterangan}}</td>
                                 <td>
