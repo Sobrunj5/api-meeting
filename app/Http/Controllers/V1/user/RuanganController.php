@@ -24,7 +24,7 @@ class RuanganController extends Controller
             }
         }
 
-        return Response::transform('success', true, PromoResource::collection(collect($res)), 200);
+        return Response::transform('success', true, RuangMeetingResource::collection(collect($res)), 200);
     }
 
 
