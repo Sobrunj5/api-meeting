@@ -41,6 +41,7 @@ class BookingController extends Controller
             $booking->save();
 
             //$hargaMakanan = [];
+            $hargamakanan = 0;
             foreach ($request->makanans as $makanan){
                 
                 $bookingMakanan = new BookingDetails();
@@ -49,11 +50,12 @@ class BookingController extends Controller
                 $bookingMakanan->harga = $makanan['harga'];
                 $bookingMakanan->jumlah = $makanan['qty'];
                 $bookingMakanan->total_harga = $makanan['harga'] * $makanan['qty'];
+                $hargamakanan += $makanan['harga'] * $makanan['qty'];
                 $bookingMakanan->save();
             }
 
-            $hargaMakanan = BookingDetails::where('id_booking', $booking->id)->get()->sum('total_harga');
-            $booking->total_bayar = $booking->harga + $hargaMakanan;
+            //$hargaMakanan = BookingDetails::where('id_booking', $booking->id)->get()->sum('total_harga');
+            $booking->total_bayar = $booking->harga + $hargamakanan;
             $booking->update();
 
 
